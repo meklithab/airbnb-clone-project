@@ -156,3 +156,116 @@ PUT    /reviews/{id}/           - Update a specific review
 DELETE /reviews/{id}/           - Delete a specific review  
 ```
 
+## 🗃️ Database Design
+
+### 🔑 Key Entities & Relationships
+
+---
+
+### 👤 Users
+
+Represents the individuals using the platform — both hosts and guests.
+
+**Fields:**
+
+* `id` (Primary Key)
+* `name`
+* `email` (unique)
+* `password_hash`
+* `is_host` (boolean to differentiate guests from hosts)
+
+**Relationships:**
+
+* A user can list **multiple properties**
+* A user can make **multiple bookings**
+* A user can leave **multiple reviews**
+
+---
+
+### 🏠 Properties
+
+Represents listings created by hosts.
+
+**Fields:**
+
+* `id` (Primary Key)
+* `title`
+* `description`
+* `price_per_night`
+* `host_id` (Foreign Key → Users)
+
+**Relationships:**
+
+* A property **belongs to one host (User)**
+* A property can have **many bookings**
+* A property can have **many reviews**
+
+---
+
+### 📅 Bookings
+
+Represents reservations made by guests.
+
+**Fields:**
+
+* `id` (Primary Key)
+* `property_id` (Foreign Key → Properties)
+* `user_id` (Foreign Key → Users)
+* `check_in_date`
+* `check_out_date`
+
+**Relationships:**
+
+* A booking **belongs to one property**
+* A booking **belongs to one user**
+* A booking may be **linked to a payment**
+
+---
+
+### 💳 Payments
+
+Represents payment transactions for bookings.
+
+**Fields:**
+
+* `id` (Primary Key)
+* `booking_id` (Foreign Key → Bookings)
+* `amount`
+* `payment_method`
+* `payment_status`
+
+**Relationships:**
+
+* A payment **belongs to one booking**
+
+---
+
+### ⭐ Reviews
+
+Represents user feedback for properties.
+
+**Fields:**
+
+* `id` (Primary Key)
+* `property_id` (Foreign Key → Properties)
+* `user_id` (Foreign Key → Users)
+* `rating` (e.g., 1–5)
+* `comment`
+
+**Relationships:**
+
+* A review **belongs to one property**
+* A review **belongs to one user**
+
+---
+
+### 🔁 Summary of Relationships
+
+* One **User** ⟶ Many **Properties**
+* One **User** ⟶ Many **Bookings**
+* One **User** ⟶ Many **Reviews**
+* One **Property** ⟶ Many **Bookings**
+* One **Property** ⟶ Many **Reviews**
+* One **Booking** ⟶ One **Payment**
+
+
