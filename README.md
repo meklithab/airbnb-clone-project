@@ -268,4 +268,73 @@ Represents user feedback for properties.
 * One **Property** ⟶ Many **Reviews**
 * One **Booking** ⟶ One **Payment**
 
+---
+
+## 🧩 Feature Breakdown
+
+### 👤 User Management
+
+Handles user registration, login, authentication, and profile updates. This ensures secure access control and allows both guests and hosts to use the platform with personalized accounts.
+
+### 🏠 Property Management
+
+Allows hosts to create, edit, and delete property listings. Users can browse available listings, filter results, and view detailed information about each property.
+
+### 📅 Booking System
+
+Enables users to reserve properties by selecting check-in and check-out dates. It manages availability, avoids double bookings, and tracks booking details.
+
+### 💳 Payment Processing
+
+Integrates a payment gateway to securely handle transactions related to bookings. It processes and records payments, ensuring that hosts receive payouts and guests are charged appropriately.
+
+### ⭐ Review System
+
+Provides functionality for users to leave ratings and comments on properties they have stayed in. This builds trust in the platform and helps users make informed booking decisions.
+
+### ⚡ Performance Optimization
+
+Implements database indexing and caching techniques for fast data access. This improves API response time and scales the application efficiently.
+
+---
+
+## 🔐 API Security
+
+### Authentication
+
+All API endpoints are protected using secure authentication methods (e.g., token-based). Only registered users can access restricted functionalities, preventing unauthorized usage.
+
+### Authorization
+
+Different access levels are enforced — e.g., only hosts can manage properties, and only guests can book. This ensures users can only access features relevant to their roles.
+
+### Rate Limiting
+
+Implements rate limiting to protect against abuse and denial-of-service (DoS) attacks. It limits how frequently users can make requests to the API.
+
+### Data Validation and Encryption
+
+User inputs are validated on both server and client sides to prevent injection attacks. Sensitive data, such as passwords and payment information, is encrypted for safety.
+
+### Importance
+
+Security measures are critical to protect user data, secure financial transactions, and maintain platform integrity. A secure backend builds user trust and ensures compliance with data protection laws.
+
+---
+
+## 🔄 CI/CD Pipeline
+
+CI/CD (Continuous Integration and Continuous Deployment) pipelines automate the process of testing, building, and deploying code changes. This ensures that every update to the codebase is verified and deployed efficiently without manual intervention.
+
+**Tools Used:**
+
+* **GitHub Actions**: Automates testing, linting, and deployment workflows directly from the repository.
+* **Docker**: Ensures consistent environments for development, testing, and production.
+* **PostgreSQL / Redis Containers**: Used in pipeline environments for integration testing.
+
+CI/CD improves code quality, reduces bugs in production, and allows faster feature delivery, making the development process more robust and scalable.
+
+---
+
+
 
